@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_partner_form_tags" model="ir.ui.view">
+            <field name="name">res.partner.form.tags</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form//sheet//group//field[@name='category_id']" position="attributes">
+                    <attribute name="options">{'no_create': False, 'no_create_edit':True}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_partner_category_form_inherit" model="ir.actions.act_window">
+            <field name="name">Contact Tags</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner.category</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new contact tag
+              </p><p>
+                Manage contact tags to better classify them for tracking and analysis purposes.
+              </p>
+            </field>
+        </record>
+        <menuitem name="Contact Tags" id="contact_tag_inherit" parent="account.menu_finance_configuration" sequence="80" action="action_partner_category_form_inherit"/>
+    </data>
+</odoo>

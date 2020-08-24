@@ -1,0 +1,7 @@
+V1 - Added purchase order line unit price, subtotal price and price total field in stock picking incoming form and  added 
+      purchase amount total field in stock picking incoming form.
+
+'version': '12.0.1.2'	-Add Supplier Do and Reference DO.
+						-Add Good Receive Date
+						-journal date and stock move date will be Good Receive Date
+'version': '12.0.3'		-Update Vendor name to stock_move(function)				

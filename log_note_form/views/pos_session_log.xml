@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+    <record id="pos_template_form_view_inherit" model="ir.ui.view">
+      <field name="name">pos.session.form.view.inherit</field>
+      <field name="model">pos.session</field>
+      <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//form" position="inside">
+          <div class="oe_chatter">
+              <field name="message_follower_ids" widget="mail_followers"/>
+              <field name="activity_ids" widget="mail_activity"/>
+              <field name="message_ids" widget="mail_thread"/>
+          </div>
+        </xpath>
+      </field>
+    </record>
+  </data>
+
+
+</odoo>

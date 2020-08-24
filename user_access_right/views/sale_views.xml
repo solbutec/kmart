@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_order_form_margin" model="ir.ui.view">
+            <field name="name">sale.order.form.margin</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_sale_margin') ])]"/>
+            <field name="arch" type="xml">
+                <field name="margin" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+            </field>
+        </record>
+        <record id="view_order_form_cus_partner" model="ir.ui.view">
+            <field name="name">sale.order.form.cus.partner</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_customer_name') ])]"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="attributes">
+                    <attribute name="options">{'no_create':True, 'no_create_edit':True}</attribute>
+                </field>
+            </field>
+        </record>
+        <record id="view_order_form_order_line" model="ir.ui.view">
+            <field name="name">sale.order.form.order_line</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_sale_order_line') ])]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree//field[@name='product_id']" position="attributes">
+                    <attribute name="options">{'no_create':True, 'no_create_edit':True}</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_order_form_button_lock" model="ir.ui.view">
+            <field name="name">sale.order.form.button.lock</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_sale_lock') ])]"/>
+            <field name="arch" type="xml">
+                <button name="action_done" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="view_order_form_button" model="ir.ui.view">
+            <field name="name">sale.order.form.button</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_sale_unlock_manager')])]"/>
+            <field name="arch" type="xml">
+                <button name="action_unlock" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="view_order_form_cancel" model="ir.ui.view">
+            <field name="name">sale.order.form.cancel</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_sale_cancel')])]"/>
+            <field name="arch" type="xml">
+                <button name="action_cancel" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="sale_order_view_form_invoice" model="ir.ui.view">
+            <field name="name">sale.order.form.invoice</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_create_invoice')])]"/>
+            <field name="arch" type="xml">
+                <button name="%(sale.action_view_sale_advance_payment_inv)d" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+            </field>
+        </record>
+    </data>
+</odoo>

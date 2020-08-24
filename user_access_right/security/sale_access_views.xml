@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.module.category" id="module_category_sale">
+            <field name="name">Sale Setting</field>
+            <field name="sequence">270</field>
+        </record>
+        <record id="group_create_invoice" model="res.groups">
+            <field name="name">Allow Create Invoice</field>
+            <field name="category_id" ref="user_access_right.module_category_sale"/>
+        </record>
+        <record id="group_sale_lock" model="res.groups">
+            <field name="name">Allow Sale Lock</field>
+            <field name="category_id" ref="user_access_right.module_category_sale"/>
+        </record>
+        <record id="group_sale_unlock_manager" model="res.groups">
+            <field name="name">Allow Sale Order UnLock</field>
+            <field name="category_id" ref="user_access_right.module_category_sale"/>
+        </record>
+        <record id="group_sale_order_line" model="res.groups">
+            <field name="name">Allow Sale Order line</field>
+            <field name="category_id" ref="user_access_right.module_category_sale"/>
+        </record>
+        <record id="group_customer_name" model="res.groups">
+            <field name="name">Allow Customer Name</field>
+            <field name="category_id" ref="user_access_right.module_category_sale"/>
+        </record>
+        <record id="group_sale_margin" model="res.groups">
+            <field name="name">Allow Sale Margin</field>
+            <field name="category_id" ref="user_access_right.module_category_sale"/>
+        </record>
+        <record id="group_sale_cancel" model="res.groups">
+            <field name="name">Allow Sale cancel</field>
+            <field name="category_id" ref="user_access_right.module_category_sale"/>
+        </record>
+    </data>
+</odoo>

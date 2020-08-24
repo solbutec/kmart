@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <report id="action_repacking_report"
+            model="stock.repackaging"
+            string="Stock Repacking"
+            report_type="qweb-pdf"
+            name="repackaging.stock_repacking_report_document"
+            file="repackaging.stock_repacking_report_document"
+    />
+
+</odoo>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template">
+
+    <t t-name="OptionsBtn">
+        <button class="control-button btn btn-success">
+            <i class="fa fa-balance-scale"/>
+            Change UOM
+        </button>
+    </t>
+
+    <t t-name="UomLine">
+        <tr class='uom-line client-line' t-att-id='uom.id || -1'>
+            <td><t t-esc='uom.uom_id[1]' /></td>
+            <td><t t-esc='widget.format_currency(uom.price)' /></td>
+            <td><span t-esc='uom.ratio'/> <span t-esc="uom.base_uom_id[1]"/></td>
+        </tr>
+    </t>
+
+    <t t-name="OptionsPopup">
+        <div class="modal-dialog">
+            <div class="popup">
+                <p class="title">
+                    <t t-esc=" widget.options.title || 'Units of Measure' "/>
+                </p>
+                <div class="body" style="margin:0;">
+                    <div class="clientlist-screen screen" style="margin:0">
+                        <div class="screen-content">
+                            <section class="full-content">
+                                <div class='window'>
+                                    <section class='subwindow'>
+                                        <div class='subwindow-container'>
+                                            <div class='subwindow-container-fix touch-scrollable scrollable-y'>
+                                                <table class='client-list'>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Uom</th>
+                                                            <th>Price</th>
+                                                            <th>Ratio</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class='uom-list-content client-list-contents'>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="button cancel">
+                        Close
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

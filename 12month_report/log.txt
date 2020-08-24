@@ -1,0 +1,4 @@
+V1 - Increased fields Seasonal, Makeup, Packing in product Form.
+     This field showing 12 month report.
+V2 - Change the field name Seasonal to Promotion and Packing to Cut Item in Product From and 12 month report.
+V3 - Change the field name Make In to Made In in Product Form and 12 month report.

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_pos_pos_form_return" model="ir.ui.view">
+            <field name="name">pos.order.form.return</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_pos_return')])]"/>
+            <field name="arch" type="xml">
+                <button name="refund" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="view_pos_pos_form_payment" model="ir.ui.view">
+            <field name="name">pos.order.form.payment</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_pos_payment')])]"/>
+            <field name="arch" type="xml">
+                <button name="%(point_of_sale.action_pos_payment)d" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="view_pos_pos_form_invoice" model="ir.ui.view">
+            <field name="name">pos.order.form.invoice</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_pos_return')])]"/>
+            <field name="arch" type="xml">
+                <button name="action_pos_order_invoice" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="view_pos_pos_form_margin" model="ir.ui.view">
+            <field name="name">pos.order.form.margin</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_pos_margin')])]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='lines']//tree//field[@name='margin']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//page//group[@name='order_total']//field[@name='margin']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_report_pos_order_pivot_margin" model="ir.ui.view">
+            <field name="name">report.pos.order.pivot.margin</field>
+            <field name="model">report.pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_report_pos_order_pivot"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_pos_margin')])]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='margin']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

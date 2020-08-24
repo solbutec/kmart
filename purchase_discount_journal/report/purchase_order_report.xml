@@ -1,0 +1,304 @@
+<?xml version='1.0' encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_purchase_order_pivot_ext" model="ir.ui.view">
+            <field name="model">purchase.report</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_pivot"/>
+            <field name="arch" type="xml">
+                <field name="price_average" position="after">
+                    <field name="total_discount" type="measure"/>
+                    <field name="dis_amount" type="measure"/>
+                    <field name="average_price_unit" type="measure"/>
+                </field>
+            </field>
+        </record>
+
+        <template id="report_purchaseorder_document_inherit" inherit_id="purchase.report_purchaseorder_document"
+                  priority="999">
+
+
+            <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+
+            <t t-call="web.external_layout">
+                <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+
+
+
+                <div class="page">
+
+
+                    <div class="oe_structure"/>
+
+                    <h2 t-if="o.state == 'draft'">Request for Quotation #
+                        <span t-field="o.name"/>
+                    </h2>
+                    <h2 t-if="o.state in ['sent', 'to approve']">Purchase Order #
+                        <span t-field="o.name"/>
+                    </h2>
+                    <h2 t-if="o.state in ['purchase', 'done']" style="font-weight:bold;text-align:center;color:black">Purchase Order
+
+                    </h2>
+                    <h2 t-if="o.state == 'cancel'">Cancelled Purchase Order #
+                        <span t-field="o.name"/>
+                    </h2>
+                    <br/>
+
+
+                    <div class="row" style="width:100%">
+                        <div class="col-md-6" style="width:50%">
+                            <div class="row" style="width:100%">
+                                <div class="col-md-6" style="width:50%;text-align:left;font-weight:bold;font-size:14px">
+                                    <span>Vendor</span>
+                                </div>
+                                <div class="col-md-6" style="width:50%;text-align:left;font-size:14px">
+                                   <t t-if="o.partner_id" >
+                                      <p t-field="o.partner_id"/>
+                                      <span t-field="o.partner_id.street" style="font-size:11px;color:#black" /><br/>
+                                      <apan t-field="o.partner_id.city" style="font-size:12px;color:#black"/>
+                                      <apan t-field="o.partner_id.state_id" style="font-size:12px;color:#black"/>
+                                   </t>
+                                </div>
+                            </div>
+
+                            <div class="row" style="width:100%">
+                                <div class="col-md-6" style="width:50%;text-align:left;font-weight:bold;font-size:14px">
+                                    <span>Contact Person</span>
+                                </div>
+                                <div class="col-md-6" style="width:50%;text-align:left;font-size:14px">
+                                   <div t-if="o.partner_id.contact_name" >
+                                      <p t-field="o.partner_id.contact_name" />
+                                   </div>
+                                </div>
+                            </div><br/>
+                            <div class="row" style="width:100%">
+                                <div class="col-md-6" style="width:50%;text-align:left;font-weight:bold;font-size:14px">
+                                    <span>Phone Number</span>
+                                </div>
+                                <div class="col-md-6" style="width:50%;text-align:left;font-size:14px">
+                                   <div t-if="o.partner_id.phone" >
+                                      <p t-field="o.partner_id.phone"/>
+                                   </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div clas="col-md-1" style="width:5%"></div>
+                        <div class="col-md-6" style="width:45%;">
+                            <div class="row" style="width:100%">
+                                <div class="col-md-6" style="width:40%;text-align:left;font-weight:bold;font-size:14px">
+                                    <span>NO</span>
+                                </div>
+                                <div class="col-md-1" style="width:5%"></div>
+                                <div class="col-md-6" style="width:55%;text-align:left;font-size:14px">
+                                   <div t-if="o.name" >
+                                      <p t-field="o.name" />
+                                   </div>
+                                </div>
+                            </div><br/>
+                            <div class="row" style="width:100%">
+                                <div class="col-md-6" style="width:40%;text-align:left;font-weight:bold;font-size:14px">
+                                    <span>Date</span>
+                                </div>
+                                <div class="col-md-1" style="width:5%"></div>
+                                <div class="col-md-6" style="width:55%;text-align:left;font-size:14px">
+                                   <div t-if="o.date_order" >
+                                      <p t-field="o.date_order" />
+                                   </div>
+                                </div>
+                            </div><br/>
+                            <div class="row" style="width:100%">
+                                <div class="col-md-6" style="width:40%;text-align:left;font-weight:bold;font-size:14px">
+                                    <span>Reference No</span>
+                                </div>
+                                <div class="col-md-1" style="width:5%"></div>
+                                <div class="col-md-6" style="width:55%;text-align:left;font-size:14px">
+                                   <div t-if="o.name" >
+                                      <p t-field="o.name" />
+                                   </div>
+                                </div>
+                            </div><br/>
+                            <div class="row" style="width:100%">
+                                <div class="col-md-6" style="width:40%;text-align:left;font-weight:bold;font-size:14px">
+                                    <span>Purchaser</span>
+                                </div>
+                                <div class="col-md-1" style="width:5%"></div>
+                                <div class="col-md-6" style="width:55%;text-align:left;font-size:14px">
+                                   <div t-if="o.user_id" >
+                                      <p t-field="o.user_id" />
+                                   </div>
+                                </div>
+                            </div><br/>
+                            <div class="row" style="width:100%">
+                                <div class="col-md-6" style="width:40%;text-align:left;font-weight:bold;font-size:14px">
+                                    <span>Terms</span>
+                                </div>
+                                <div class="col-md-1" style="width:5%"></div>
+                                <div class="col-md-6" style="width:55%;text-align:left;font-size:14px">
+                                   <div t-if="o.payment_term_id">
+                                      <p t-field="o.payment_term_id"/>
+                                   </div>
+                                </div>
+                            </div><br/>
+                             <div class="row" style="width:100%">
+                                <div class="col-md-6" style="width:40%;text-align:left;font-weight:bold;font-size:14px">
+                                    <span>Require Date</span>
+                                </div>
+                                 <div class="col-md-1" style="width:5%"></div>
+                                <div class="col-md-6" style="width:55%;text-align:left;font-size:14px">
+                                   <div t-if="o.date_planned">
+                                      <p t-field="o.date_planned"/>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-sm o_main_table">
+                        <thead>
+                            <tr style="color:black">
+                                <th style="width: 45%;color:black">
+                                    <strong>Description</strong>
+                                </th>
+                                <!--<th>-->
+                                    <!--<strong>Taxes</strong>-->
+                                <!--</th>-->
+                                <th class="text-right" style="color:black">
+                                    <strong>Qty</strong>
+                                </th>
+                                <th class="text-right" style="color:black">
+                                    <strong>Unit Price</strong>
+                                </th>
+                                <th class="text-right" style="color:black">
+                                    <span>Disc Type</span>
+                                </th>
+
+                                <th class="text-right" style="color:black">
+                                    <span>Disc</span>
+                                </th>
+                                <th class="text-right" style="color:black">
+                                    <strong>Amount</strong>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="o.order_line" t-as="line">
+                                <td>
+                                    <span t-field="line.name"/>
+                                </td>
+                                <!--<td>-->
+                                    <!--<span t-esc="', '.join(map(lambda x: x.name, line.taxes_id))"/>-->
+                                <!--</td>-->
+                                <td class="text-right">
+                                    <span t-field="line.product_qty"/>
+                                    <span t-field="line.product_uom.name" groups="uom.group_uom"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="line.price_unit"/>
+                                </td>
+
+                                <td
+                                        t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                    <span t-field="line.discount_line_type"/>
+
+                                </td>
+
+
+                                <td t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                    <!--<span t-field="line.dis_amount"/>-->
+                                    <span t-esc="'{0:,.0f}'.format(int(line.dis_amount))"/>
+                                </td>
+
+                                <td class="text-right">
+                                    <span t-field="line.price_subtotal"
+                                          t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div id="total" class="row justify-content-end">
+                        <div class="col-4">
+                            <table class="table table-sm">
+                                <tr class="border-black">
+                                    <td>
+                                        <strong style="color:black">Subtotal</strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="o.amount_untaxed"
+                                              t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <strong style="color:black">Line Disc</strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="o.amount_discount"
+                                              t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                    </td>
+                                </tr>
+
+                                <tr class="border-black o_subtotal" style="">
+                                    <td>
+                                        <strong style="color:black">After Disc Total</strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <!--<span t-field="o.amount_dis_total"/>-->
+                                        <span t-esc="o.amount_dis_total"
+                                              t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                    </td>
+                                </tr>
+
+                                <tr style="">
+                                    <td>
+                                        <strong style="color:black">Global Disc</strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="o.amount_global_discount"
+                                              t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                        <!--<span t-field="o.amount_global_discount"/>-->
+                                    </td>
+                                </tr>
+
+                                <tr class="border-black o_subtotal" style="">
+                                    <td>
+                                        <strong style="color:black">After Global Disc Total</strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="o.amount_global_dis_total"
+                                              t-options='{"widget": "monetary", "display_currency": o.currency_id}'
+                                        />
+                                        <!--<span t-field="o.amount_global_dis_total"/>-->
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="color:black">Taxes</td>
+                                    <td class="text-right">
+                                        <span t-esc="o.amount_tax"
+                                              t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                    </td>
+                                </tr>
+                                <tr class="border-black o_total">
+                                    <td>
+                                        <strong style="color:black">Total</strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="o.amount_total"
+                                              t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <p t-field="o.notes"/>
+                    <div class="oe_structure"/>
+                </div>
+                </t>
+            </xpath>
+
+        </template>
+    </data>
+</odoo>

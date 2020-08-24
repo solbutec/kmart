@@ -1,0 +1,13 @@
+.pos .popup .body td,th{
+    text-align: center;
+}
+
+.pos .popup .body .uom-line:hover{
+    background: #6EC89B;
+    color: white;
+    cursor: pointer;
+}
+
+.pos .popup .body{
+    border-top: solid 2px #6EC89B;
+}

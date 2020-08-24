@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="low_price_reminder">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div class="row">
+                                <div class="col-12 text-center mt32">
+                                    <h4><strong>Product Summary</strong></h4>
+                                    <h5>Below Product lists are Sales Price lower then Cost Price</h5>
+                                </div>
+                            </div>
+                            <div class="row mt32">
+                                <div class="col-12">
+                                
+                                <table class="table table-sm table-bordered">
+                                    <thead class="thead-dark">
+                                        <th>#</th>
+                                        <th class="text-left">Product</th>
+                                        <th class="text-right">Cost Price</th>
+                                        <th class="text-right">Sale Price</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="o._get_product_list()" t-as="product">
+                                            <td><span t-esc="product_index + 1"/></td>
+                                            <td><span t-field="product.display_name"/></td>
+                                            <td class="text-right"><span t-field="product.standard_price"/></td>
+                                            <td class="text-right"><span t-field="product.lst_price"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+         </template>
+
+        <report
+            id="action_report_lower_prices"
+            model="res.company"
+            string="Lower Price Products"
+            report_type="qweb-pdf"
+            name="low_price_reminder.low_price_reminder"
+            file="low_price_reminder.low_price_reminder"
+        />
+
+    </data>
+</odoo>

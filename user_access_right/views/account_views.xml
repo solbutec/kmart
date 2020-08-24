@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="invoice_supplier_form_payment" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.payment</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_register_payment')])]"/>
+            <field name="arch" type="xml">
+                <button name="%(account.action_account_invoice_payment)d" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="invoice_supplier_form_credit" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.credit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_credit_note')])]"/>
+            <field name="arch" type="xml">
+                <button name="%(account.action_account_invoice_refund)d" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="invoice_form_payment" model="ir.ui.view">
+            <field name="name">account.invoice.form.payment</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_cus_register_payment')])]"/>
+            <field name="arch" type="xml">
+                <button name="%(account.action_account_invoice_payment)d" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="invoice_form_credit" model="ir.ui.view">
+            <field name="name">account.invoice.form.credit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_cus_credit_note')])]"/>
+            <field name="arch" type="xml">
+                <button name="%(account.action_account_invoice_refund)d" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+            </field>
+        </record>
+    </data>
+</odoo>

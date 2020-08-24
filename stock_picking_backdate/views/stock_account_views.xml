@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_inventory_form2_inherit" model="ir.ui.view">
+            <field name="name">stock.inventory.form2.inherit</field>
+            <field name="model">stock.inventory</field>
+            <field name="inherit_id" ref="stock.view_inventory_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='accounting_date']" position="replace">
+                    <field name="accounting_date" attrs="{'readonly':[('state','!=', 'draft')]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+</odoo>

@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_product_seasonal_product_manager","product.seasonal","model_product_seasonal","base.group_partner_manager",1,1,1,1
+"access_product_seasonal_public","product.seasonal.public","model_product_seasonal",,1,0,0,0
+"access_product_packing_product_manager","product.packing","model_product_packing","base.group_partner_manager",1,1,1,1
+"access_product_packing_public","product.packing.public","model_product_packing",,1,0,0,0

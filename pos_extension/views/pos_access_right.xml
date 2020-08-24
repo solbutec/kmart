@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <record id="view_pos_session_form" model="ir.ui.view">
+            <field name="name">pos.session.form.view</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field/tree/field[@name='balance_start']" position="replace">
+                    <field name="balance_start" groups="base.group_partner_manager"/>
+                </xpath>
+                <xpath expr="//field/tree/field[@name='total_entry_encoding']" position="replace">
+                    <field name="total_entry_encoding" groups="base.group_partner_manager"/>
+                </xpath>
+                <xpath expr="//field/tree/field[@name='balance_end_real']" position="replace">
+                    <field name="balance_end_real" groups="base.group_partner_manager"/>
+                </xpath>
+            </field>
+       </record>
+    </data>
+    <menuitem
+        id="point_of_sale.menu_pos_session_all"
+        parent="point_of_sale.menu_point_of_sale"
+        action="point_of_sale.action_pos_session"
+        sequence="2"
+        groups="point_of_sale.group_pos_manager,point_of_sale.group_pos_user"/>
+
+        <menuitem id="point_of_sale.menu_point_of_sale"
+        name="Orders"
+        parent="point_of_sale.menu_point_root"
+        sequence="10"
+        groups="point_of_sale.group_pos_manager"/>
+
+</odoo>

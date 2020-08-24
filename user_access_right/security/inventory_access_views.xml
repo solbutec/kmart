@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.module.category" id="module_category_inventory">
+            <field name="name">Inventory Setting</field>
+            <field name="sequence">250</field>
+        </record>
+
+        <record id="group_cost_manager" model="res.groups">
+            <field name="name">Allow Cost Update</field>
+            <field name="category_id" ref="user_access_right.module_category_inventory"/>
+        </record>
+
+        <record id="group_price_manager" model="res.groups">
+            <field name="name">Allow Sale Price</field>
+            <field name="category_id" ref="user_access_right.module_category_inventory"/>
+        </record>
+
+        <record id="group_picking_return" model="res.groups">
+            <field name="name">Allow Picking Return</field>
+            <field name="category_id" ref="user_access_right.module_category_inventory"/>
+        </record>
+
+        <record id="group_picking_scrap" model="res.groups">
+            <field name="name">Allow Picking Scrap</field>
+            <field name="category_id" ref="user_access_right.module_category_inventory"/>
+        </record>
+
+        <record id="group_picking_unlock" model="res.groups">
+            <field name="name">Allow Picking Unlock</field>
+            <field name="category_id" ref="user_access_right.module_category_inventory"/>
+        </record>
+
+        <record id="group_product_multi_uom" model="res.groups">
+            <field name="name">Allow Multi UOM</field>
+            <field name="category_id" ref="user_access_right.module_category_inventory"/>
+        </record>
+    </data>
+</odoo>

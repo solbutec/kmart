@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_picking_form_return" model="ir.ui.view">
+            <field name="name">stock.picking.form.return</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_picking_return')])]"/>
+            <field name="arch" type="xml">
+                <button name="%(stock.act_stock_return_picking)d" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="view_picking_form_scrap" model="ir.ui.view">
+            <field name="name">stock.picking.form.scrap</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_picking_scrap')])]"/>
+            <field name="arch" type="xml">
+                <button name="button_scrap" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="view_picking_form_unlock" model="ir.ui.view">
+            <field name="name">stock.picking.form.unlock</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_picking_unlock')])]"/>
+            <field name="arch" type="xml">
+                <button name="action_toggle_is_locked" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="product_template_form_view_price" model="ir.ui.view">
+            <field name="name">product.template.common.form.price</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_price_manager')])]"/>
+            <field name="arch" type="xml">
+                <field name="list_price" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                </field>
+            </field>
+        </record>
+        <record id="product_template_form_view_cost" model="ir.ui.view">
+            <field name="name">product.template.common.form.cost</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_cost_manager')])]"/>
+            <field name="arch" type="xml">
+                <button name="%(stock_account.action_view_change_standard_price)d" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="product_template_form_view_multi_uom" model="ir.ui.view">
+            <field name="name">product.template.common.form.multi.uom</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="groups_id" eval="[(6, 0, [ref('user_access_right.group_product_multi_uom')])]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='multi_uom_ids']//field[@name='uom_id']" position="attributes">
+                    <attribute name="options">{'no_create':True, 'no_create_edit':True}</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

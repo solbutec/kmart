@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_picking_form_good_received" model="ir.ui.view">
+            <field name="name">stock.picking.form.good.received</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page//tree//field[@name='product_uom']" position="after">
+                    <field name="price_unit" attrs="{'column_invisible': [('parent.picking_type_code', '!=', 'incoming')], 'readonly': True}"/>
+                </xpath>
+                <xpath expr="//sheet//notebook" position="after">
+                    <group class="oe_subtotal_footer oe_right">
+                        <field name="amount_untaxed" widget="monetary" attrs="{'invisible':[('picking_type_code', '!=', 'incoming')]}"/>
+                        <field name="amount_tax" widget="monetary" attrs="{'invisible':[('picking_type_code', '!=', 'incoming')]}"/>
+                        <div class="oe_subtotal_footer_separator oe_inline" attrs="{'invisible':[('picking_type_code', '!=', 'incoming')]}">
+                            <label for="amount_total"/>
+                        </div>
+                        <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" attrs="{'invisible':[('picking_type_code', '!=', 'incoming')]}"/>
+                    </group>
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="supplier_do"/>
+                    <!-- <field name="ref_do"/> -->
+                </xpath>
+                <xpath expr="//field[@name='scheduled_date']" position="after">
+                    <field name="good_receive_date"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
